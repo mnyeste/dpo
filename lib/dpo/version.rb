@@ -1,0 +1,3 @@
+module Dpo
+  VERSION = "0.0.1"
+end
