@@ -9,13 +9,11 @@ end
 describe CopyFile do
   before do
     sh = SpecHarness.new
-
     sh.prepare(['nikon_d3200_1.jpg'])
-
   end
 
-  it "should greet" do
-    puts "Hello world"
+  it "file should be renamed and moved based on EXIF date" do
+    
   end
 
 end

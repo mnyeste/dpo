@@ -5,7 +5,7 @@ require 'open-uri'
 require 'mini_exiftool'
 
 # Fetch an external photo
-filename = open('../testdata/img_08.jpg').path
+filename = open('../samples/nikon_d3200_1.jpg').path
 
 puts Dir.pwd
 
@@ -13,7 +13,9 @@ puts Dir.pwd
 photo = MiniExiftool.new filename
 
 # Print the metadata
-photo.tags.compact.sort.each do |tag|
+#photo.tags.compact.sort.each do |tag|
   #puts "#{tag}: #{photo[tag]}"
-  puts tag.ljust(28) + photo[tag].to_s
-end
+#  puts tag.ljust(28) + photo[tag].to_s
+#end
+
+puts photo['CreateDate']

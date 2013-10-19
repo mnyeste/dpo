@@ -7,6 +7,8 @@ class SpecHarness
   attr_reader :sample_photo_dir, :log
 
   IMPORT_DIR = 'import';
+  ORGANIZED_DIR = 'organized';
+
 
   def initialize
     log_init
@@ -17,10 +19,10 @@ class SpecHarness
   def log_init
 
     @log = Logger.new(STDOUT)
-    @log.level = Logger::INFO
+    @log.level = Logger::DEBUG
 
     @log.formatter = proc do |severity, datetime, progname, msg|
-      "[#{datetime.strftime('%F %T')}] #{severity}: #{msg}\n"
+      "[#{datetime.strftime('%T')}] #{severity.ljust(5)} #{msg}\n"
     end
 
   end
@@ -45,6 +47,7 @@ class SpecHarness
   end
 
   def prepare(filelist)
+
     if @prepared
       return
     end
@@ -52,10 +55,12 @@ class SpecHarness
     @log.info('Preparing harness')
 
     filelist.each do |file|
+      @log.debug('Copy file: ' + file)
       FileUtils.cp(@sample_photo_dir + file, @harness_workspace + IMPORT_DIR)
     end
 
     @prepared = true
+
   end
 
   private :create_dirs, :set_dirs
