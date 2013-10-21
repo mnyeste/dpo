@@ -9,7 +9,6 @@ class SpecHarness
   IMPORT_DIR = 'import';
   ORGANIZED_DIR = 'organized';
 
-
   def initialize
     log_init
     set_dirs
@@ -55,7 +54,7 @@ class SpecHarness
     @log.info('Preparing harness')
 
     filelist.each do |file|
-      @log.debug('Copy file: ' + file)
+      @log.debug('Copy file to harness: ' + file)
       FileUtils.cp(@sample_photo_dir + file, @harness_workspace + IMPORT_DIR)
     end
 
