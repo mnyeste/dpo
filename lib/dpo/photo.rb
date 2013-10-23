@@ -11,8 +11,8 @@ module Dpo
       @path = Pathname.new(path);
       raise RuntimeError.new('Photo file not found') unless @path.file?
 
-      @exif = MiniExiftool.new(@path.to_path)
-      raise RuntimeError.new('No exif data') unless @exif['CreateDate']
+      @create_date = MiniExiftool.new(@path.to_path)['CreateDate'];
+      raise RuntimeError.new('CreateDate EXIF tag missing') unless @create_date.instance_of?(Time)
 
     end
 
