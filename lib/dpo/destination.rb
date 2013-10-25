@@ -11,7 +11,7 @@ module Dpo
 
       dto = exif_data[EXIF_TAG_DTO]
 
-      raise RuntimeError unless dto
+      raise RuntimeError.new("EXIF tag [#{EXIF_TAG_DTO}] does not exist") unless dto
 
       ssto = exif_data[EXIF_TAG_SSTO]
 
