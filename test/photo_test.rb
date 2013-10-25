@@ -1,18 +1,21 @@
 require "test_helper"
+require "tempfile"
 
 class PhotoTest < MiniTest::Unit::TestCase
 
-  def test_new_exists
+  def test_file_exists
 
-    photo = Dpo::Photo.new('samples/nikon_d3200_1.jpg')
+    tf = Tempfile.new('sample.jpg')
+
+    photo = Dpo::Photo.new(tf)
     refute_nil(photo);
 
   end
 
-  def test_new_not_exists
+  def test_file_does_not_exist
 
     assert_raises(RuntimeError) {
-      photo = Dpo::Photo.new('samples/fake.jpg')
+      photo = Dpo::Photo.new('fake.jpg')
     }
 
   end
