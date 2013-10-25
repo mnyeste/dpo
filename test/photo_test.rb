@@ -17,12 +17,12 @@ class PhotoTest < MiniTest::Unit::TestCase
 
   end
 
-  def test_new_no_exif_data
+  #def test_new_no_exif_data
 
-    assert_raises(RuntimeError) {
-      photo = Dpo::Photo.new('samples/picture_without_exif.jpg')
-    }
+  #  assert_raises(RuntimeError) {
+  #    photo = Dpo::Photo.new('samples/picture_without_exif.jpg')
+  #  }
 
-  end
+  #end
 
 end

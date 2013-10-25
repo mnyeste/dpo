@@ -11,6 +11,8 @@ puts Dir.pwd
 
 # Read the metadata
 photo = MiniExiftool.new(filename, {:timestamps => DateTime})
+#photo = MiniExiftool.new(filename)
+
 
 # Print the metadata
 #photo.tags.compact.sort.each do |tag|
@@ -21,3 +23,11 @@ photo = MiniExiftool.new(filename, {:timestamps => DateTime})
 puts photo['CreateDate']
 puts photo['DateTimeOriginal']
 puts photo['SubSecTimeOriginal']
+
+photo.timestamps = Time
+photo.reload
+
+puts photo['CreateDate']
+puts photo['DateTimeOriginal']
+puts photo['SubSecTimeOriginal']
+
