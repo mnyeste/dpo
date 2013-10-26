@@ -19,6 +19,11 @@ module Dpo
 
     def move
 
+      Dir::glob(@incoming_dir + '*.jpg',  File::FNM_CASEFOLD) do |file|
+
+        puts file
+      end
+
     end
 
   end

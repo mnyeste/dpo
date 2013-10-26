@@ -4,10 +4,10 @@ require 'logger'
 
 class SpecHarness
 
-  attr_reader :sample_photo_dir, :log
+  attr_reader :incoming_dir, :organized_dir
 
   INCOMING_DIR = 'incoming';
-  TARGET_DIR = 'organized';
+  ORGANIZED_DIR = 'organized';
 
   def initialize
     log_init
@@ -38,9 +38,12 @@ class SpecHarness
     @log.info('Creating test harness in: ' + @harness_workspace.to_s)
 
     FileUtils.rm_rf(@harness_workspace)
-    FileUtils.mkdir_p(@harness_workspace)
+    
+    @incoming_dir = @harness_workspace + INCOMING_DIR
+    @organized_dir = @harness_workspace + ORGANIZED_DIR
 
-    FileUtils.mkdir_p(@harness_workspace + INCOMING_DIR)
+    FileUtils.mkdir_p(@incoming_dir)
+    FileUtils.mkdir_p(@organized_dir)
 
   end
 
@@ -49,6 +52,8 @@ class SpecHarness
     if @prepared
       return
     end
+
+    puts
 
     @log.info('Preparing harness')
 
