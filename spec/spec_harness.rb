@@ -6,8 +6,8 @@ class SpecHarness
 
   attr_reader :sample_photo_dir, :log
 
-  IMPORT_DIR = 'import';
-  ORGANIZED_DIR = 'organized';
+  INCOMING_DIR = 'incoming';
+  TARGET_DIR = 'organized';
 
   def initialize
     log_init
@@ -40,8 +40,7 @@ class SpecHarness
     FileUtils.rm_rf(@harness_workspace)
     FileUtils.mkdir_p(@harness_workspace)
 
-    FileUtils.mkdir_p(@harness_workspace + IMPORT_DIR)
-
+    FileUtils.mkdir_p(@harness_workspace + INCOMING_DIR)
 
   end
 
@@ -55,7 +54,7 @@ class SpecHarness
 
     filelist.each do |file|
       @log.debug('Copy file to harness: ' + file)
-      FileUtils.cp(@sample_photo_dir + file, @harness_workspace + IMPORT_DIR)
+      FileUtils.cp(@sample_photo_dir + file, @harness_workspace + INCOMING_DIR)
     end
 
     @prepared = true
