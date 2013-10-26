@@ -8,8 +8,8 @@ Rake::TestTask.new do |t|
   t.pattern = "test/*_test.rb"
 end
 
-#Rake::TestTask.new do |t|
-#  t.options = '-v'
-#  t.libs << 'spec'
-#  t.pattern = "spec/*_spec.rb"
-#end
+Rake::TestTask.new do |t|
+  t.options = '-v'
+  t.libs << 'spec'
+  t.pattern = "spec/*_spec.rb"
+end

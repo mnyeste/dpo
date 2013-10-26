@@ -5,7 +5,7 @@ require "spec_harness"
 require "dpo"
 
 
-describe Dpo::FileMover do
+describe Dpo::FileOrganizer do
   before do
     sh = SpecHarness.new
     sh.prepare(['nikon_d3200_1.jpg'])
