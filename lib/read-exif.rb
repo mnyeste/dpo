@@ -5,7 +5,7 @@ require 'open-uri'
 require 'mini_exiftool'
 
 # Fetch an external photo
-filename = open('../samples/nikon_d3200_1.jpg').path
+filename = open('../samples/DSC_0001.JPG').path
 
 puts Dir.pwd
 
@@ -19,13 +19,6 @@ photo = MiniExiftool.new(filename, {:timestamps => DateTime})
   #puts "#{tag}: #{photo[tag]}"
 #  puts tag.ljust(28) + photo[tag].to_s
 #end
-
-puts photo['CreateDate']
-puts photo['DateTimeOriginal']
-puts photo['SubSecTimeOriginal']
-
-photo.timestamps = Time
-photo.reload
 
 puts photo['CreateDate']
 puts photo['DateTimeOriginal']

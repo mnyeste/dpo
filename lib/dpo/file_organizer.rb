@@ -19,9 +19,22 @@ module Dpo
 
     def move
 
-      Dir::glob(@incoming_dir + '*.jpg',  File::FNM_CASEFOLD) do |file|
+      Dir::glob(@incoming_dir + '*.jpg',  File::FNM_CASEFOLD) do |src|
 
-        puts file
+        photo = Photo.new(src) 
+
+        begin
+          dst =  @organized_dir + Destination::date_time_original(photo.exif_data, '.jpg')
+        
+          FileUtils.mkdir_p(dst.dirname)
+          FileUtils.move(src,  dst)
+
+        rescue RuntimeError
+          puts 'can\'t move: ' + src
+        end
+
+
+
       end
 
     end

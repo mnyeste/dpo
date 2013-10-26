@@ -4,6 +4,8 @@ module Dpo
 
   class Photo
 
+    attr_accessor :exif_data
+
     include Dpo::Logging
 
     def initialize(path) 

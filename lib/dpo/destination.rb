@@ -7,7 +7,7 @@ module Dpo
     EXIF_TAG_DTO = 'DateTimeOriginal'
     EXIF_TAG_SSTO = 'SubSecTimeOriginal'
 
-    def self.date_time_original(exif_data)
+    def self.date_time_original(exif_data, extension)
 
       dto = exif_data[EXIF_TAG_DTO]
 
@@ -21,8 +21,10 @@ module Dpo
       filename = dto.strftime('%Y%m%d_%H%M%S')
 
       if ssto 
-        filename += ('_' + ssto)
+        filename += ('_' + ssto.to_s)
       end
+
+      filename += extension
 
       dstpath += filename 
 
