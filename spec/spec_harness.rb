@@ -1,6 +1,8 @@
 require 'pathname'
 require 'fileutils'
 require 'logger'
+require 'rugged'
+
 
 class SpecHarness
 
@@ -11,8 +13,8 @@ class SpecHarness
 
   def initialize
     log_init
-    set_dirs
     create_dirs
+    init_git
   end
 
   def log_init
@@ -26,14 +28,12 @@ class SpecHarness
 
   end
 
-  def set_dirs
+  def create_dirs
+
     project_root = Pathname.new(__FILE__).parent.parent
 
     @sample_photo_dir = project_root + 'samples'
     @harness_workspace = project_root + 'build' + 'spec_workspace'
-  end
-
-  def create_dirs
 
     @log.info('Creating test harness in: ' + @harness_workspace.to_s)
 
@@ -46,6 +46,11 @@ class SpecHarness
     FileUtils.mkdir_p(@organized_dir)
 
   end
+
+  def init_git
+    Rugged::Repository.init_at(@organized_dir.to_s)
+  end
+
 
   def prepare(filelist)
 
@@ -66,6 +71,6 @@ class SpecHarness
 
   end
 
-  private :create_dirs, :set_dirs
+  private :create_dirs
 
 end
