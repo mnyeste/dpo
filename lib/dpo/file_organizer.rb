@@ -17,7 +17,7 @@ module Dpo
 
     end
 
-    def move
+    def copy
 
       Dir::glob(@incoming_dir + '*.jpg',  File::FNM_CASEFOLD) do |src|
 
@@ -27,10 +27,11 @@ module Dpo
           dst =  @organized_dir + Destination::date_time_original(photo.exif_data, '.jpg')
         
           FileUtils.mkdir_p(dst.dirname)
-          FileUtils.move(src,  dst)
+          FileUtils.cp(src,  dst)
 
-        rescue RuntimeError
-          puts 'can\'t move: ' + src
+        rescue RuntimeError => e
+          puts 'can\'t copy: ' + src
+          puts e
         end
 
 

@@ -52,22 +52,16 @@ class SpecHarness
   end
 
 
-  def prepare(filelist)
-
-    if @prepared
-      return
-    end
+  def prepare_files(filelist)
 
     puts
 
-    @log.info('Preparing harness')
+    @log.info('Copy files')
 
     filelist.each do |file|
       @log.debug('Copy file to harness: ' + file)
       FileUtils.cp(@sample_photo_dir + file, @harness_workspace + INCOMING_DIR)
     end
-
-    @prepared = true
 
   end
 
