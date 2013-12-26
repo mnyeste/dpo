@@ -6,8 +6,6 @@ module Dpo
 
     attr_accessor :exif_data
 
-    include Dpo::Logging
-
     def initialize(path) 
       
       @path = Pathname.new(path)
