@@ -2,7 +2,6 @@ require "minitest/autorun"
 require "minitest/pride"
 
 require "spec_harness"
-require "dpo"
 
 
 describe Dpo::FileOrganizer do
