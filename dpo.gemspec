@@ -21,8 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mini_exiftool"
   spec.add_dependency "colorize"
 
-  spec.add_dependency "rugged"
-
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end

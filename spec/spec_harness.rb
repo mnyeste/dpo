@@ -1,8 +1,8 @@
 require 'pathname'
 require 'fileutils'
 require 'logger'
-require 'rugged'
 
+require "dpo"
 
 class SpecHarness
 
@@ -14,7 +14,6 @@ class SpecHarness
   def initialize
     log_init
     create_dirs
-    init_git
   end
 
   def log_init
@@ -46,11 +45,6 @@ class SpecHarness
     FileUtils.mkdir_p(@organized_dir)
 
   end
-
-  def init_git
-    Rugged::Repository.init_at(@organized_dir.to_s)
-  end
-
 
   def prepare_files(filelist)
 
