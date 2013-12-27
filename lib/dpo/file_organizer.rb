@@ -24,10 +24,10 @@ module Dpo
         photo = Photo.new(src) 
 
         begin
-          dst =  @organized_dir + Destination::date_time_original(photo.exif_data, '.jpg')
+          #dst =  @organized_dir + Destination::date_time_original(photo.exif_data, '.jpg')
         
-          FileUtils.mkdir_p(dst.dirname)
-          FileUtils.cp(src,  dst)
+          #FileUtils.mkdir_p(dst.dirname)
+          #FileUtils.cp(src,  dst)
 
         rescue RuntimeError => e
           puts 'can\'t copy: ' + src
