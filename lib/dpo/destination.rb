@@ -1,5 +1,3 @@
-require 'mini_exiftool'
-
 module Dpo
 
   class Destination
@@ -7,7 +5,6 @@ module Dpo
     EXIF_TAG_DTO = 'DateTimeOriginal'
     EXIF_TAG_SSTO = 'SubSecTimeOriginal'
     EXIF_TAG_CMN = 'Camera Model Name'
-
 
     def initialize(exif_data, extension)
 
