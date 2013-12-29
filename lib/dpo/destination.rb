@@ -6,6 +6,8 @@ module Dpo
 
     EXIF_TAG_DTO = 'DateTimeOriginal'
     EXIF_TAG_SSTO = 'SubSecTimeOriginal'
+    EXIF_TAG_CMN = 'Camera Model Name'
+
 
     def initialize(exif_data, extension)
 
@@ -13,6 +15,8 @@ module Dpo
       raise RuntimeError.new("EXIF tag [#{EXIF_TAG_DTO}] does not exist") unless @dto
 
       @ssto = exif_data[EXIF_TAG_SSTO]
+      @cmn = exif_data[EXIF_TAG_CMN]
+      
       @extension = extension
 
     end
@@ -20,7 +24,16 @@ module Dpo
     def folder
 
       dstpath = Pathname.new @dto.strftime('%Y')
-      dstpath += @dto.strftime('%F')
+
+      datefolder =  @dto.strftime('%F')
+
+      if @cmn
+        datefolder += '-'
+        datefolder +=  Dpo::Camera.id(@cmn)       
+      end
+
+      dstpath += datefolder
+
     end
 
     def file 
