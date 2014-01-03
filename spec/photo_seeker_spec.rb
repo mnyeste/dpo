@@ -17,7 +17,7 @@ describe Dpo::PhotoSeeker do
 
     ps=Dpo::PhotoSeeker.new(sh.incoming_dir)
 
-    assert_equal(5, ps.seek.size)
+    assert_equal(5, ps.photos.size)
 
   end
 

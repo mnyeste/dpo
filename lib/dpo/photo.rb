@@ -4,7 +4,7 @@ module Dpo
 
   class Photo
 
-    attr_accessor :exif_data
+    attr_reader :exif_data
 
     def initialize(path) 
       
