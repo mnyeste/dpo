@@ -2,17 +2,15 @@ module Dpo
 
   class PhotoSeeker
     
-    def initialize(start_dir, filter = [])
-      @start_dir = Pathname.new(start_dir)
-      unless @start_dir.directory?
-        raise RuntimeError.new('Folder not found: ' + start_dir) 
+    def initialize(folder)
+      @folder = Pathname.new(folder)
+      unless @folder.directory?
+        raise RuntimeError.new('Folder not found: ' + folder) 
       end
-
-      @filter = filter
     end
 
-    def seek(fn=nil)
-
+    def seek
+      Dir.glob("#{@folder}/**/*.jpg", File::FNM_CASEFOLD)
     end
   
   end

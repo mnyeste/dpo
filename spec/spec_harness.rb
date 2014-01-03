@@ -32,12 +32,35 @@ class SpecHarness
 
   end
 
-  def prepare_files(filelist)
+  def prepare_files(filelist, folder = nil)
+      
+    target = @harness_workspace + INCOMING_DIR
+
+    if folder
+      target += folder
+      FileUtils.mkdir_p(target)
+    end
+
     filelist.each do |file|
-      FileUtils.cp(@sample_photo_dir + file, @harness_workspace + INCOMING_DIR)
+      FileUtils.cp(@sample_photo_dir + file, target)
     end
 
   end
+
+  def create_empty_file(filename, folder = nil)
+
+    target = @harness_workspace + INCOMING_DIR
+    
+    if folder
+      target += folder
+      FileUtils.mkdir_p(target)
+    end
+
+    FileUtils.touch(target + filename)
+
+  end
+
+
 
   private :create_dirs
 
