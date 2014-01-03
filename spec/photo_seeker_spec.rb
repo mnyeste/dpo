@@ -6,7 +6,7 @@ require "spec_harness"
 
 describe Dpo::PhotoSeeker do
 
-  it "prepare harness" do
+  it "seek for files" do
   
     sh = SpecHarness.new
     sh.prepare_files(['IMG_0001.JPG', 'DSC_0001.JPG', '2012-09-20_09-00-41_742.jpg'], "100")
