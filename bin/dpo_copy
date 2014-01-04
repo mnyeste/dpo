@@ -3,3 +3,10 @@
 require_relative '../lib/dpo'
 
 puts 'DPO - copy'
+
+abort('Mandatory arguments missing') unless ARGV.size == 2
+
+src = Pathname.new(ARGV[0])
+dst = Pathname.new(ARGV[1])
+
+abort("Source folder doesn't exist") unless src.directory?
