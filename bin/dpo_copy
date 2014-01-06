@@ -12,4 +12,14 @@ dst = Pathname.new(ARGV[1])
 abort("Source folder doesn't exist") unless src.directory?
 
 abort("Destination folder doesn't exist") unless dst.directory?
-abort("Destination folder is not writeable") unless dst.writeable?
+abort("Destination folder is not writeable") unless dst.writable?
+
+ps = Dpo::PhotoSeeker.new(src)
+
+ps.photos.each { |file| 
+
+    photo = Dpo::Photo.new(file)
+
+    puts photo.basename
+
+}

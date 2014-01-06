@@ -37,11 +37,23 @@ describe Dpo do
       srcdir = tmpdir + 'source'
       FileUtils.mkdir(srcdir)
       dstdir = tmpdir + 'destination'
-      FileUtils.mkdir(dstdir, :mode => 444)
+      FileUtils.mkdir(dstdir, :mode => 0444)
 
-      status=system("ruby", "#{@bin}/dpo_copy", srcdir.to_s , "fake2")
+      status=system("ruby", "#{@bin}/dpo_copy", srcdir.to_s , dstdir.to_s)
       assert(!status)
     }
+  end
+
+  it "copy files should pass" do
+  
+    sh = SpecHarness.new
+    sh.prepare_files(['IMG_0001.JPG', 'DSC_0001.JPG', '2012-09-20_09-00-41_742.jpg'], "100")
+    sh.prepare_files(['P1010001.JPG', 'picture_without_exif.jpg' ], "101")
+
+    status=system("ruby", "#{@bin}/dpo_copy", sh.incoming_dir.to_s , sh.organized_dir.to_s)
+
+    assert(status)
+
   end
 
 end
