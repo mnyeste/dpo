@@ -4,7 +4,7 @@ module Dpo
 
   class Photo
 
-    attr_reader :exif_data, :basename, :extension
+    attr_reader :exif_data, :path, :basename, :extension
 
     def initialize(path) 
       @path = Pathname.new(path)

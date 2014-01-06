@@ -18,8 +18,15 @@ ps = Dpo::PhotoSeeker.new(src)
 
 ps.photos.each { |file| 
 
-    photo = Dpo::Photo.new(file)
+    begin
+      photo = Dpo::Photo.new(file)
+      dest = Dpo::Destination.new(photo.exif_data, photo.extension)
 
-    puts photo.basename
+      FileUtils.mkdir_p(dst + dest.folder)
+      FileUtils.copy_file(photo.path, dst + dest.folder + dest.file)
+    rescue Exception => e  
+
+      puts e.message
+    end
 
 }
