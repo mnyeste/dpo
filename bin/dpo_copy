@@ -10,3 +10,6 @@ src = Pathname.new(ARGV[0])
 dst = Pathname.new(ARGV[1])
 
 abort("Source folder doesn't exist") unless src.directory?
+
+abort("Destination folder doesn't exist") unless dst.directory?
+abort("Destination folder is not writeable") unless dst.writeable?
