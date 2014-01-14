@@ -1,8 +1,4 @@
-require "minitest/autorun"
-require "minitest/pride"
-
-require "spec_harness"
-
+require "spec_helper"
 
 describe Dpo do
 
