@@ -1,13 +1,13 @@
 require "test_helper"
 require "tempfile"
 
-class PhotoTest < MiniTest::Unit::TestCase
+class IncomingFileTest < MiniTest::Unit::TestCase
 
   def test_file_exists
     tf = Tempfile.new('sample.jpg')
 
-    photo = Dpo::Photo.new(tf)
-    refute_nil(photo);
+    inf = Dpo::IncomingFile.new(tf)
+    refute_nil(inf);
   end
 
   def test_file_data
@@ -16,16 +16,16 @@ class PhotoTest < MiniTest::Unit::TestCase
       fakefile = tmpdir + 'fakefile.jpg'
       FileUtils.touch(fakefile)
 
-      photo = Dpo::Photo.new(fakefile.to_s)
+      inf = Dpo::IncomingFile.new(fakefile.to_s)
  
-      assert_equal('fakefile.jpg', photo.basename.to_s)
-      assert_equal('.jpg', photo.extension)
+      assert_equal('fakefile.jpg', inf.basename.to_s)
+      assert_equal('.jpg', inf.extension)
     }
   end
 
   def test_file_does_not_exist
     assert_raises(RuntimeError) {
-      photo = Dpo::Photo.new('fake.jpg')
+      inf = Dpo::IncomingFile.new('fake.jpg')
     }
   end
 end
