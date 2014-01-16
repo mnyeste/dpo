@@ -4,7 +4,7 @@ module Dpo
 
     EXIF_TAG_DTO = 'DateTimeOriginal'
     EXIF_TAG_SSTO = 'SubSecTimeOriginal'
-    EXIF_TAG_CMN = 'Camera Model Name'
+    EXIF_TAG_CMN = 'Model'
 
     def initialize(exif_data, extension)
 
@@ -13,7 +13,7 @@ module Dpo
 
       @ssto = exif_data[EXIF_TAG_SSTO]
       @cmn = exif_data[EXIF_TAG_CMN]
-      
+        
       @extension = extension
 
     end
