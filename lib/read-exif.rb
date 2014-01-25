@@ -5,13 +5,13 @@ require 'open-uri'
 require 'mini_exiftool'
 
 # Fetch an external photo
-filename = open('../samples/DSC_0001.JPG').path
+filename = open('../samples/DSC_0001.MOV').path
 
 puts Dir.pwd
 
 # Read the metadata
-photo = MiniExiftool.new(filename, {:timestamps => DateTime})
-#photo = MiniExiftool.new(filename)
+#photo = MiniExiftool.new(filename, {:timestamps => DateTime})
+photo = MiniExiftool.new(filename)
 
 
 # Print the metadata
@@ -20,7 +20,9 @@ photo = MiniExiftool.new(filename, {:timestamps => DateTime})
 #  puts tag.ljust(28) + photo[tag].to_s
 #end
 
-puts photo['CreateDate']
-puts photo['DateTimeOriginal']
-puts photo['SubSecTimeOriginal']
+#puts photo['CreateDate']
+#puts photo['DateTimeOriginal']
+#puts photo['SubSecTimeOriginal']
+
+puts photo.to_hash
 
