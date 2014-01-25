@@ -6,22 +6,22 @@ module Dpo
       { "Model"=>"NIKON D3200",
         "FileType"=>"JPEG",
         } => 'nikon-d3200',
-      { "Model"=>"Canon PowerShot S5 IS" } => 'canon-s5'
+      { "Model"=>"Canon PowerShot S5 IS",
+        "FileType"=>"JPEG",
+        } => 'canon-s5'
     }
 
-
+    attr_reader :camera
 
     def initialize(exif_data)
-      @exif_data = exif_data
-    end
 
-    def camera
       @@fingerprints.each{|fingerprint, model|
-        return model if (fingerprint.to_a & @exif_data.to_a).size == fingerprint.size
+        if (fingerprint.to_a & exif_data.to_a).size == fingerprint.size
+          @camera = model
+        end
       }
-      return nil
-    end
 
+    end
 
   end
 
