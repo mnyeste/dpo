@@ -14,6 +14,8 @@ class FingerprintTest < MiniTest::Unit::TestCase
     f = Dpo::Fingerprint.new(stub_exif)
 
     assert_equal("canon-s5", f.camera)
+    assert_equal("jpg", f.extension)
+
   end
 
   def test_partial_fingerprint_doesnt_match
